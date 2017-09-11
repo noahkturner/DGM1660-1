@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: bocean man.ma
-//Last modified: Mon, Sep 11, 2017 10:11:17 AM
+//Last modified: Mon, Sep 11, 2017 10:12:41 AM
 //Codeset: 1252
 requires maya "2017ff05";
 currentUnit -l centimeter -a degree -t film;
@@ -13,8 +13,8 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "069BCCD6-4F0D-A705-E0DB-12B55365E614";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 3.2887946591388562 1.6072466637312193 0.79917733362899535 ;
-	setAttr ".r" -type "double3" 338.06164722228152 -2431.8000000005222 -5.0628427549774697e-014 ;
+	setAttr ".t" -type "double3" 1.4858183624201078 0.47757167091625558 -2.625038022014051 ;
+	setAttr ".r" -type "double3" 356.06164722205972 -2366.2000000004305 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "F2B80BE5-444A-719B-BEC4-DB948B7B1CEC";
 	setAttr -k off ".v" no;
