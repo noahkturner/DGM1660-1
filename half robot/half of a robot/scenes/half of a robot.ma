@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: half of a robot.ma
-//Last modified: Wed, Sep 20, 2017 10:32:16 AM
+//Last modified: Wed, Sep 20, 2017 10:37:35 AM
 //Codeset: 1252
 requires maya "2017ff05";
 currentUnit -l centimeter -a degree -t film;
@@ -13,13 +13,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "71764DFA-450F-9C7C-4D9F-39A5B6CFAD1B";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -4.9913479419530713 -2.0648311517350075 19.029887116113333 ;
-	setAttr ".r" -type "double3" 4.4616472699953382 342.19999999942536 0 ;
+	setAttr ".t" -type "double3" -5.5297414671271961 -0.36845381268671284 10.115129025225267 ;
+	setAttr ".r" -type "double3" 4.4616472699853604 330.59999999937872 2.2816978456424015e-016 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "D16460EF-4B60-D47D-7D1E-619A6FAA49C8";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 18.263391837213039;
+	setAttr ".coi" 10.536657979950672;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -50,7 +50,7 @@ createNode camera -s -n "frontShape" -p "front";
 	setAttr -k off ".v";
 	setAttr ".rnd" no;
 	setAttr ".coi" 1000.1;
-	setAttr ".ow" 4.8980501360951738;
+	setAttr ".ow" 3.9993253404813802;
 	setAttr ".imn" -type "string" "front";
 	setAttr ".den" -type "string" "front_depth";
 	setAttr ".man" -type "string" "front_mask";
