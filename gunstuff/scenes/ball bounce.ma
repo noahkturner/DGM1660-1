@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: ball bounce.ma
-//Last modified: Mon, Nov 27, 2017 08:20:04 AM
+//Last modified: Mon, Nov 27, 2017 08:20:38 AM
 //Codeset: 1252
 requires maya "2017ff05";
 currentUnit -l centimeter -a degree -t film;
@@ -13,8 +13,8 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "90A8656F-44A1-C932-5916-A188652D387C";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 101.29221306134946 54.059375979231639 208.6306257407017 ;
-	setAttr ".r" -type "double3" -11.138352729599459 0.20000000000050969 -1.1802911545619728e-016 ;
+	setAttr ".t" -type "double3" 16.399147327218927 47.908520170693158 190.76486844721444 ;
+	setAttr ".r" -type "double3" -9.3383527295995172 -25.39999999999954 -4.4011270048219096e-016 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "80BA65C6-4C80-5CA2-6FAD-208DFE9BCB31";
 	setAttr -k off ".v" no;
