@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: skeletonman.ma
-//Last modified: Fri, Dec 01, 2017 10:23:00 AM
+//Last modified: Fri, Dec 01, 2017 10:45:31 AM
 //Codeset: 1252
 requires maya "2017ff05";
 requires "stereoCamera" "10.0";
@@ -15,13 +15,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "71764DFA-450F-9C7C-4D9F-39A5B6CFAD1B";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -4.1121963268316257 25.345798460495882 14.064934502170519 ;
-	setAttr ".r" -type "double3" 333.86164728762702 1429.000000000183 4.0501051915285465e-016 ;
+	setAttr ".t" -type "double3" -20.850247741934329 23.113496235385586 11.091353088116598 ;
+	setAttr ".r" -type "double3" 330.26164728761705 1393.8000000001475 2.2976132695707899e-015 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "D16460EF-4B60-D47D-7D1E-619A6FAA49C8";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 31.132203382501682;
+	setAttr ".coi" 34.019047876779851;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -92,7 +92,6 @@ createNode joint -n "Root";
 	rename -uid "00F39446-404D-6735-F5EB-858F761A1900";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 14;
-	setAttr ".t" -type "double3" -0.084478844616286963 5.3038144111633301 -9.6918487382972032 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -109,8 +108,6 @@ createNode joint -n "Hip_L" -p "Pelvis";
 	setAttr ".ove" yes;
 	setAttr ".ovrgbf" yes;
 	setAttr ".ovrgb" -type "float3" 1 0 0 ;
-	setAttr ".t" -type "double3" 2.5072067428045193 2.3431907969495569e-007 0.0039985620479896511 ;
-	setAttr ".r" -type "double3" 89.999999999999957 -7 -90.000000000000014 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -1662,8 +1659,6 @@ createNode mesh -n "L_HipShape" -p "L_Hip";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode joint -n "Knee_L" -p "Hip_L";
 	rename -uid "D1320549-4BD5-C6EF-1874-AC931D5705D9";
-	setAttr ".t" -type "double3" 1.7295003914199674 0.018915175259968109 2.2204460492503131e-015 ;
-	setAttr ".r" -type "double3" 6.2158798942127988e-018 2 2 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -1672,7 +1667,6 @@ createNode joint -n "Knee_L" -p "Hip_L";
 	setAttr ".radi" 0.5;
 createNode joint -n "Ankle_L" -p "Knee_L";
 	rename -uid "E540813B-4C67-286D-09AE-21AFA9FA6B46";
-	setAttr ".t" -type "double3" 3.4107550770358106 -0.16072020467595749 -8.8817841970012523e-016 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -4221,6 +4215,30 @@ createNode mesh -n "L_LeftToeShape" -p "L_LeftToe";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Ankle_L_parentConstraint1" -p "Ankle_L";
+	rename -uid "627DCB4E-4E30-449A-1C9A-6E9849CF1C36";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 0.0036941277211757217 -1.7671224705750888e-007 
+		6.4781357167476017e-008 ;
+	setAttr ".tg[0].tor" -type "double3" 89.683298669747401 -8.9944719436484029 -87.975090374412488 ;
+	setAttr ".lr" -type "double3" -1.9083328088781167e-014 -1.9083328088781041e-014 
+		3.7212489773123153e-013 ;
+	setAttr ".rst" -type "double3" 3.4107550770358097 -0.16072020467595571 -1.3322676295501878e-015 ;
+	setAttr ".rsrr" -type "double3" 6.3611093629270351e-015 3.1805546814635176e-015 
+		-3.1805546814635176e-015 ;
+	setAttr -k on ".w0";
 createNode transform -n "L_Thigh" -p "Knee_L";
 	rename -uid "CEE196F7-467F-F17D-AD56-A7B88CD54BD6";
 	setAttr ".t" -type "double3" -3.8662010760427421 0.56032882988035659 2.2619198899220896 ;
@@ -5569,13 +5587,55 @@ createNode mesh -n "L_KneeShape" -p "L_Knee";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Knee_L_parentConstraint1" -p "Knee_L";
+	rename -uid "6E69691B-4456-1D32-E537-6BA0E1C484E4";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 7.1864595163617651e-008 -4.9957888048624e-008 
+		-4.3343785272043078e-007 ;
+	setAttr ".tg[0].tor" -type "double3" 89.683298669747458 -8.9944719436469409 -87.975090374412446 ;
+	setAttr ".lr" -type "double3" 8.0991969954668212e-015 2.0000000000000133 1.9999999999999818 ;
+	setAttr ".rst" -type "double3" 1.7295003914199683 0.018915175259968109 1.7763568394002505e-015 ;
+	setAttr ".rsrr" -type "double3" 8.0991969954668212e-015 2.0000000000000133 1.9999999999999818 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "Hip_L_parentConstraint1" -p "Hip_L";
+	rename -uid "36B4FA7C-4E28-6732-428E-E3B7840EABAF";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 7.18645973840637e-008 2.3431907969495569e-007 
+		-1.9436069997880168e-007 ;
+	setAttr ".tg[0].tor" -type "double3" 89.999999999999943 -7.0000000000000009 -90 ;
+	setAttr ".lr" -type "double3" 89.999999999999957 -7.0000000000000053 -90 ;
+	setAttr ".rst" -type "double3" 2.5072067428045197 2.3431907969495569e-007 0.0039985620479914274 ;
+	setAttr ".rsrr" -type "double3" 89.999999999999957 -7.0000000000000053 -90 ;
+	setAttr -k on ".w0";
 createNode joint -n "Hip_R" -p "Pelvis";
 	rename -uid "061004D9-484D-7787-C586-6D9ADAD54DC5";
 	setAttr ".ove" yes;
 	setAttr ".ovrgbf" yes;
 	setAttr ".ovrgb" -type "float3" 1 0 0 ;
-	setAttr ".t" -type "double3" -2.338251152317524 -4.4111633297205799e-006 0.0039987548828133157 ;
-	setAttr ".r" -type "double3" 89.999999999999957 -7 -90.000000000000014 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -5583,8 +5643,6 @@ createNode joint -n "Hip_R" -p "Pelvis";
 	setAttr ".radi" 0.5;
 createNode joint -n "Knee_R" -p "Hip_R";
 	rename -uid "77813E96-4B0F-F39C-AD1A-9CA6D91D2AB0";
-	setAttr ".t" -type "double3" -1.7294969755373693 -0.018918353709821645 4.4408920985006262e-016 ;
-	setAttr ".r" -type "double3" 6.2158798942127988e-018 2 2 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -5592,7 +5650,6 @@ createNode joint -n "Knee_R" -p "Hip_R";
 	setAttr ".radi" 0.5;
 createNode joint -n "Ankle_R" -p "Knee_R";
 	rename -uid "BB5D198F-48B3-D552-8610-168DAD7DE1E2";
-	setAttr ".t" -type "double3" -3.410753430121801 0.16072314644616448 -3.5802685820485181e-006 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -8145,6 +8202,29 @@ createNode mesh -n "R_RightToeShape" -p "R_RightToe";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Ankle_R_parentConstraint1" -p "Ankle_R";
+	rename -uid "31491F95-4677-B71C-5200-9FA9449390A6";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -3.2196043164844923e-008 -2.3765549805876418e-009 
+		-1.4739990206180664e-007 ;
+	setAttr ".tg[0].tor" -type "double3" -90.316701330252585 8.9944719436484295 87.975090374412488 ;
+	setAttr ".lr" -type "double3" 1.2722218725854067e-014 -1.7655625192200634e-030 1.5902773407317584e-014 ;
+	setAttr ".rst" -type "double3" -3.4107534301217992 0.1607231464461627 -3.5802685838248749e-006 ;
+	setAttr ".rsrr" -type "double3" 1.5902773407317584e-014 6.3611093629270327e-015 
+		6.3611093629270351e-015 ;
+	setAttr -k on ".w0";
 createNode transform -n "R_Thigh" -p "Knee_R";
 	rename -uid "2E226B57-45C7-3DCB-D1D8-CCA57F1F70E5";
 	setAttr ".t" -type "double3" 3.8681050057343178 -0.56032607040699389 -2.3164036065747471 ;
@@ -10662,6 +10742,28 @@ createNode mesh -n "polySurfaceShape4" -p "R_Knee";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Knee_R_parentConstraint1" -p "Knee_R";
+	rename -uid "BBA33499-49F4-1B8D-2E11-56BDE63E9693";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -3.0975341847039317e-008 3.601074194392595e-008 
+		-3.631591809494239e-007 ;
+	setAttr ".tg[0].tor" -type "double3" -90.316701330252556 8.9944719436469516 87.975090374412446 ;
+	setAttr ".lr" -type "double3" -4.686718752557162e-015 2.000000000000004 1.9999999999999878 ;
+	setAttr ".rst" -type "double3" -1.7294969755373693 -0.018918353709819868 4.4408920985006262e-016 ;
+	setAttr ".rsrr" -type "double3" -9.4480271934839339e-016 2.0000000000000169 2.0000000000000067 ;
+	setAttr -k on ".w0";
 createNode transform -n "R_Hip" -p "Hip_R";
 	rename -uid "DC9C295E-49F0-97C9-E559-9FA9AE705583";
 	setAttr ".t" -type "double3" 2.0726597996701823 -0.44681172736000541 -2.4499874339773045 ;
@@ -13333,12 +13435,32 @@ createNode mesh -n "R_HipJointShape" -p "R_HipJoint";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Hip_R_parentConstraint1" -p "Hip_R";
+	rename -uid "E028BEF8-45D8-5F3C-21FF-E0A60599B2BB";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -3.0975342291128527e-008 -1.1962890500427648e-007 
+		-1.5258780905469393e-009 ;
+	setAttr ".tg[0].tor" -type "double3" -90.000000000000057 6.9999999999999938 90.000000000000014 ;
+	setAttr ".lr" -type "double3" 89.999999999999957 -7.0000000000000098 -90.000000000000014 ;
+	setAttr ".rst" -type "double3" -2.3382511523175245 -4.4111633288324015e-006 0.0039987548828133157 ;
+	setAttr ".rsrr" -type "double3" 89.999999999999957 -7.0000000000000098 -90.000000000000014 ;
+	setAttr -k on ".w0";
 createNode joint -n "LowerBack" -p "Root";
 	rename -uid "CA79CFAC-4FB8-E085-6544-6C93651D3383";
 	setAttr ".ove" yes;
 	setAttr ".ovc" 6;
-	setAttr ".t" -type "double3" -3.0661890804140057e-009 0 -1.6585609330377338e-008 ;
-	setAttr ".r" -type "double3" -89.999999999999972 -14.999999999999998 89.999999999999972 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -13364,8 +13486,6 @@ createNode joint -n "Clav_R" -p "UpperBack";
 	setAttr ".ovrgbf" yes;
 	setAttr ".ovc" 11;
 	setAttr ".ovrgb" -type "float3" 1 0 0 ;
-	setAttr ".t" -type "double3" 4.4940258323581004 1.4022899657271513 3.4155211523175275 ;
-	setAttr ".r" -type "double3" 3.0000000000000004 5 -5 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -13383,15 +13503,12 @@ createNode joint -n "Shoulder_R" -p "Clav_R";
 	setAttr ".radi" 0.5;
 createNode joint -n "Elbow_R" -p "Shoulder_R";
 	rename -uid "86B727E4-40ED-1C63-47E3-2F918ED4243D";
-	setAttr ".t" -type "double3" -5.9999858889580606 -2.0353488405788767e-006 -9.9875972381369138e-008 ;
-	setAttr ".r" -type "double3" 0 -5 -5 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".radi" 0.5;
 createNode joint -n "Wrist_R" -p "Elbow_R";
 	rename -uid "D725504B-483D-8118-0489-88B84EDCC669";
-	setAttr ".t" -type "double3" -4.9999968671370656 -5.0258384547419155e-006 -9.7100747957767908e-006 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -14711,6 +14828,29 @@ createNode mesh -n "R_LeftFingerShape" -p "R_LeftFinger";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Wrist_R_parentConstraint1" -p "Wrist_R";
+	rename -uid "0A3F9D68-4D62-6C3A-AA72-BF86974ECA11";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller4W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.2115478398300183e-007 1.2893672574065818e-008 
+		3.955078131667733e-007 ;
+	setAttr ".tg[0].tor" -type "double3" 175.11029680952359 4.0659231051085944 95.660832152351986 ;
+	setAttr ".lr" -type "double3" 7.9513867036587968e-016 1.8884543421189626e-015 2.5444437451708134e-014 ;
+	setAttr ".rst" -type "double3" -4.9999968671370647 -5.0258384538537371e-006 -9.7100747940004339e-006 ;
+	setAttr ".rsrr" -type "double3" 1.0038625713369227e-014 2.2860236773019034e-015 
+		2.0026375645254928e-031 ;
+	setAttr -k on ".w0";
 createNode transform -n "R_Elbow" -p "Elbow_R";
 	rename -uid "E1618DA7-405A-0DA2-1487-0CAF1474CCA9";
 	setAttr ".t" -type "double3" 0.64004993453897896 0.82519081408319916 0.077154950687994273 ;
@@ -16232,6 +16372,28 @@ createNode mesh -n "R_ForearmShape" -p "R_Forearm";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Elbow_R_parentConstraint1" -p "Elbow_R";
+	rename -uid "851FCE60-4FDE-D0BA-8269-9FB3A0DE7702";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller3W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.5625000049368509e-007 -1.684570340998448e-007 
+		-2.2369384566900408e-007 ;
+	setAttr ".tg[0].tor" -type "double3" 175.11029680952359 4.065923105108598 95.660832152352 ;
+	setAttr ".lr" -type "double3" -2.3446419145513873e-015 -5.0000000000000258 -5.0000000000000249 ;
+	setAttr ".rst" -type "double3" -5.9999858889580597 -2.0353488396906982e-006 -9.9875974157725977e-008 ;
+	setAttr ".rsrr" -type "double3" 9.3536246591145761e-015 -4.9999999999999982 -5.0000000000000187 ;
+	setAttr -k on ".w0";
 createNode transform -n "R_Shoulder" -p "Shoulder_R";
 	rename -uid "0A7DA7E3-49A1-8A77-F79C-5C8AEA91F63A";
 	setAttr ".t" -type "double3" -5.2995766427466089 0.76706300471417688 0.13264528037127299 ;
@@ -17686,14 +17848,33 @@ createNode mesh -n "R_BicepShape" -p "R_Bicep";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Clav_R_parentConstraint1" -p "Clav_R";
+	rename -uid "119AE2B1-475D-69E6-D1A6-C09E7216AEDF";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 0 -1.7763568394002505e-015 1.7763568394002505e-015 ;
+	setAttr ".tg[0].tor" -type "double3" -176.99999999999997 -5.0000000000000009 4.9999999999999858 ;
+	setAttr ".lr" -type "double3" 3.0000000000000213 5 -4.9999999999999911 ;
+	setAttr ".rst" -type "double3" 4.4940258323580968 1.4022899657271477 3.4155211523175275 ;
+	setAttr ".rsrr" -type "double3" 3.0000000000000213 5 -4.9999999999999911 ;
+	setAttr -k on ".w0";
 createNode joint -n "Clav_L" -p "UpperBack";
 	rename -uid "4DCBD488-4165-EA59-E45C-4F9F2C46D870";
 	setAttr ".ove" yes;
 	setAttr ".ovrgbf" yes;
 	setAttr ".ovc" 11;
 	setAttr ".ovrgb" -type "float3" 1 0 0 ;
-	setAttr ".t" -type "double3" 4.4940258323581039 1.4022899657271477 -3.5844788476824725 ;
-	setAttr ".r" -type "double3" 3.0000000000000004 5 -5 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -17709,15 +17890,12 @@ createNode joint -n "Shoulder_L" -p "Clav_L";
 	setAttr ".radi" 0.5;
 createNode joint -n "Elbow_L" -p "Shoulder_L";
 	rename -uid "846D6AD8-4A12-C1AD-3840-72A0F8684F3C";
-	setAttr ".t" -type "double3" 6 0 0 ;
-	setAttr ".r" -type "double3" 0 -5 -5 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".radi" 0.5;
 createNode joint -n "Wrist_L" -p "Elbow_L";
 	rename -uid "4B8C71E2-48B0-F407-390B-5CA1AC6731A8";
-	setAttr ".t" -type "double3" 5 0 1.7763568394002505e-015 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -19036,6 +19214,29 @@ createNode mesh -n "L_LeftFingerShape" -p "L_LeftFinger";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Wrist_L_parentConstraint1" -p "Wrist_L";
+	rename -uid "529BE6EF-4B80-F1E4-F810-DF93BDB1FE21";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller1W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 8.3476471957055765e-008 1.4800825232086368e-008 
+		-6.0457321371387707e-008 ;
+	setAttr ".tg[0].tor" -type "double3" -4.7729821024035184 0.93271621230273938 -88.664026227514128 ;
+	setAttr ".lr" -type "double3" 3.975693351829396e-016 -6.3611093629270335e-015 -2.6090487621380412e-016 ;
+	setAttr ".rst" -type "double3" 5 1.7763568394002505e-015 1.7763568394002505e-015 ;
+	setAttr ".rsrr" -type "double3" -3.9756933518293979e-016 -1.5902773407317584e-015 
+		1.2697370642405135e-014 ;
+	setAttr -k on ".w0";
 createNode transform -n "L_Elbow" -p "Elbow_L";
 	rename -uid "277F15A6-4B78-D571-3034-11B9884BA8E0";
 	setAttr ".t" -type "double3" 0.55956046482448407 -12.906542993558507 -1.1962932653860978 ;
@@ -20557,6 +20758,28 @@ createNode mesh -n "L_ForearmShape" -p "L_Forearm";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Elbow_L_parentConstraint1" -p "Elbow_L";
+	rename -uid "FF61C493-40E2-572C-2D70-C89F63E966EA";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller1W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 6.1682498664339391e-008 1.2842849894667552e-008 
+		-1.4571494233450721e-007 ;
+	setAttr ".tg[0].tor" -type "double3" -4.8897031904764825 -4.0659231051085936 -92.660832152352015 ;
+	setAttr ".lr" -type "double3" -8.2311897000208204e-016 -5.0000000000000089 -4.9999999999999867 ;
+	setAttr ".rst" -type "double3" 6 -8.8817841970012523e-016 -1.7763568394002505e-015 ;
+	setAttr ".rsrr" -type "double3" -1.4217509481854143e-015 -4.9999999999999956 -4.9999999999999867 ;
+	setAttr -k on ".w0";
 createNode transform -n "L_Shoulder" -p "Shoulder_L";
 	rename -uid "78747FBA-4175-EE75-BA13-A89F0A2516F9";
 	setAttr ".t" -type "double3" 5.5342977062679601 -12.915100219760561 -1.1429721004164897 ;
@@ -22011,6 +22234,28 @@ createNode mesh -n "L_BicepShape" -p "L_Bicep";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Clav_L_parentConstraint1" -p "Clav_L";
+	rename -uid "DA3033A9-4E9D-35D7-C4F3-8295CC457A20";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -8.8817841970012523e-016 -1.7763568394002505e-015 
+		1.7763568394002505e-015 ;
+	setAttr ".tg[0].tor" -type "double3" 3.0000000000000191 5.0000000000000036 -5.0000000000000107 ;
+	setAttr ".lr" -type "double3" 3.0000000000000138 4.9999999999999991 -5.0000000000000107 ;
+	setAttr ".rst" -type "double3" 4.4940258323581004 1.4022899657271459 -3.5844788476824716 ;
+	setAttr ".rsrr" -type "double3" 3.0000000000000138 4.9999999999999991 -5.0000000000000107 ;
+	setAttr -k on ".w0";
 createNode joint -n "Neck1" -p "UpperBack";
 	rename -uid "A9CC27AF-43CC-5007-41C4-939F9C12BC17";
 	setAttr ".ove" yes;
@@ -22031,8 +22276,6 @@ createNode joint -n "Neck2" -p "Neck1";
 	setAttr ".radi" 0.25;
 createNode joint -n "Head" -p "Neck2";
 	rename -uid "2A6EDA24-477A-B5F8-9D45-03B090E14751";
-	setAttr ".t" -type "double3" 1.2254165719569965 -1.2810774276564293e-031 -2.8847299129131243e-016 ;
-	setAttr ".r" -type "double3" 0 0 -90 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
@@ -22322,6 +22565,30 @@ createNode mesh -n "HeadStillShape" -p "HeadStill";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode parentConstraint -n "Head_parentConstraint1" -p "Head";
+	rename -uid "CA29A2CF-46EA-4BDC-4FCF-FC94F9171D21";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 1.3877787807814457e-015 8.5911343816746921e-008 
+		1.3043034741144766e-007 ;
+	setAttr ".tg[0].tor" -type "double3" -4.4527765540489247e-014 -89.999999999999986 
+		0 ;
+	setAttr ".lr" -type "double3" 4.0481852097554499e-014 2.2489917831974725e-014 -90.000000000000028 ;
+	setAttr ".rst" -type "double3" 1.2254165719569965 0 -2.7755575615628914e-016 ;
+	setAttr ".rsrr" -type "double3" 4.0481852097554499e-014 2.2489917831974725e-014 
+		-90.000000000000028 ;
+	setAttr -k on ".w0";
 createNode transform -n "Abs" -p "UpperBack";
 	rename -uid "C66E1886-42F9-D43A-A61D-07B93D121A49";
 	setAttr ".t" -type "double3" -1.0111473188983657 0.34069670069822244 -0.11173628165977867 ;
@@ -24845,6 +25112,47 @@ createNode mesh -n "Pelvis1Shape" -p "Pelvis1";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 	setAttr ".dmb" yes;
+createNode parentConstraint -n "LowerBack_parentConstraint1" -p "LowerBack";
+	rename -uid "39E8BFA5-433D-2812-C580-4D96C388C91A";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" -1.3877787807814457e-017 1.7763568394002505e-015 
+		0 ;
+	setAttr ".tg[0].tor" -type "double3" -89.999999999999972 -14.999999999999996 89.999999999999972 ;
+	setAttr ".lr" -type "double3" -89.999999999999972 -14.999999999999996 89.999999999999972 ;
+	setAttr ".rst" -type "double3" -3.0661890942917935e-009 0 -1.6585609330377338e-008 ;
+	setAttr ".rsrr" -type "double3" -89.999999999999972 -14.999999999999996 89.999999999999972 ;
+	setAttr -k on ".w0";
+createNode parentConstraint -n "Root_parentConstraint1" -p "Root";
+	rename -uid "5F6177EB-4989-7E10-882F-4A84172415AD";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Controller2W0" -dv 1 -min 0 -at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 3.0661891081695813e-009 -1.7763568394002505e-015 
+		1.6585612883091017e-008 ;
+	setAttr ".rst" -type "double3" -0.084478844616286936 5.3038144111633283 -9.6918487382971996 ;
+	setAttr -k on ".w0";
 createNode transform -n "ControllerGroup1";
 	rename -uid "67F9B5D7-4615-37BA-59DA-B7990D85F345";
 	setAttr ".t" -type "double3" 6.3659548759460449 1.7357684373855591 -9.0905342102050781 ;
@@ -24881,31 +25189,6 @@ createNode nurbsCurve -n "ControllerShape1" -p "|ControllerGroup2|Controller1";
 		0.78361162489122504 4.7982373409884682e-017 -0.78361162489122382
 		-1.2643170607829326e-016 6.7857323231109134e-017 -1.1081941875543879
 		-0.78361162489122427 4.7982373409884713e-017 -0.78361162489122427
-		;
-createNode transform -n "ControllerGroup3";
-	rename -uid "22CB2D86-4659-9B68-FE1E-FC84ADA8B42C";
-createNode transform -n "Controller1" -p "ControllerGroup3";
-	rename -uid "B4FA8B44-4947-2B4E-E512-2D837AF73B7D";
-	setAttr ".rp" -type "double3" 6.9734134674072266 12.696115493774414 -9.3050451278686523 ;
-	setAttr ".sp" -type "double3" 6.9734134674072266 12.696115493774414 -9.3050451278686523 ;
-createNode nurbsCurve -n "ControllerShape1" -p "|ControllerGroup3|Controller1";
-	rename -uid "2301AA42-4A5F-25D9-F354-639586D11D3D";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		9.4702667031417409 12.521511838819567 -11.807233640972948
-		6.9787968159729665 12.75764744944482 -12.843674058714917
-		4.4841734362253662 12.957738474957688 -11.807233640972949
-		3.4477131067420728 13.004574306321876 -9.3050451278686541
-		4.476560231672714 12.870719148729261 -6.802856614764357
-		6.9680301188414857 12.634583538104009 -5.7664161970223864
-		9.462653498589086 12.43449251259114 -6.8028566147643552
-		10.49911382807238 12.387656681226952 -9.3050451278686506
-		9.4702667031417409 12.521511838819567 -11.807233640972948
-		6.9787968159729665 12.75764744944482 -12.843674058714917
-		4.4841734362253662 12.957738474957688 -11.807233640972949
 		;
 createNode transform -n "ControllerGroup4";
 	rename -uid "2A656C7F-4030-38D8-1309-CA90E867C06A";
@@ -24960,33 +25243,6 @@ createNode nurbsCurve -n "ControllerShape3" -p "Controller3";
 		-4.9734195271476462 6.7976221374079868 -11.332136578581473
 		-6.85791015625 6.6988601684570313 -12.113789383323564
 		-8.742400785352352 6.6000981995060757 -11.332136578581473
-		;
-createNode transform -n "ControllerGroup6";
-	rename -uid "3FA99474-47E7-31A2-C874-2382BD358DF2";
-	setAttr ".rp" -type "double3" -6.007949294940147 12.696115493774414 -9.3050451278686559 ;
-	setAttr ".sp" -type "double3" -6.007949294940147 12.696115493774414 -9.3050451278686559 ;
-createNode transform -n "Controller2" -p "ControllerGroup6";
-	rename -uid "18AADD0F-4E3F-F0F9-3BEB-A18FD4D0C2F3";
-	setAttr ".rp" -type "double3" -6.9734101295471191 12.696100234985352 -9.3050498962402344 ;
-	setAttr ".sp" -type "double3" -6.9734101295471191 12.696100234985352 -9.3050498962402344 ;
-createNode nurbsCurve -n "ControllerShape2" -p "|ControllerGroup6|Controller2";
-	rename -uid "97948D63-476D-1A68-82ED-70AC69F1A7AB";
-	setAttr -k off ".v";
-	setAttr ".cc" -type "nurbsCurve" 
-		3 8 2 no 3
-		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
-		11
-		-4.4841700983652562 12.957723216168626 -11.80723840934453
-		-6.97879347811286 12.757632190655757 -12.843678827086499
-		-9.4702633652816317 12.521496580030504 -11.807238409344532
-		-10.499110490212272 12.387641422437889 -9.3050498962402362
-		-9.4626501607289804 12.434477253802077 -6.802861383135939
-		-6.9680267809813801 12.634568279314946 -5.7664209653939684
-		-4.4765568938126084 12.870703889940199 -6.8028613831359372
-		-3.4477097688819653 13.004559047532814 -9.3050498962402326
-		-4.4841700983652562 12.957723216168626 -11.80723840934453
-		-6.97879347811286 12.757632190655757 -12.843678827086499
-		-9.4702633652816317 12.521496580030504 -11.807238409344532
 		;
 createNode transform -n "ControllerGroup7";
 	rename -uid "889DE76E-4CBA-F2D8-DAAA-F1BD38E0CAE5";
@@ -25693,27 +25949,404 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".btrs" 512;
 select -ne :ikSystem;
 	setAttr -s 4 ".sol";
+connectAttr "Root_parentConstraint1.ctx" "Root.tx";
+connectAttr "Root_parentConstraint1.cty" "Root.ty";
+connectAttr "Root_parentConstraint1.ctz" "Root.tz";
+connectAttr "Root_parentConstraint1.crx" "Root.rx";
+connectAttr "Root_parentConstraint1.cry" "Root.ry";
+connectAttr "Root_parentConstraint1.crz" "Root.rz";
 connectAttr "Root.s" "Pelvis.is";
 connectAttr "Pelvis.s" "Hip_L.is";
+connectAttr "Hip_L_parentConstraint1.ctx" "Hip_L.tx";
+connectAttr "Hip_L_parentConstraint1.cty" "Hip_L.ty";
+connectAttr "Hip_L_parentConstraint1.ctz" "Hip_L.tz";
+connectAttr "Hip_L_parentConstraint1.crx" "Hip_L.rx";
+connectAttr "Hip_L_parentConstraint1.cry" "Hip_L.ry";
+connectAttr "Hip_L_parentConstraint1.crz" "Hip_L.rz";
 connectAttr "Hip_L.s" "Knee_L.is";
+connectAttr "Knee_L_parentConstraint1.ctx" "Knee_L.tx";
+connectAttr "Knee_L_parentConstraint1.cty" "Knee_L.ty";
+connectAttr "Knee_L_parentConstraint1.ctz" "Knee_L.tz";
+connectAttr "Knee_L_parentConstraint1.crx" "Knee_L.rx";
+connectAttr "Knee_L_parentConstraint1.cry" "Knee_L.ry";
+connectAttr "Knee_L_parentConstraint1.crz" "Knee_L.rz";
 connectAttr "Knee_L.s" "Ankle_L.is";
+connectAttr "Ankle_L_parentConstraint1.ctx" "Ankle_L.tx";
+connectAttr "Ankle_L_parentConstraint1.cty" "Ankle_L.ty";
+connectAttr "Ankle_L_parentConstraint1.ctz" "Ankle_L.tz";
+connectAttr "Ankle_L_parentConstraint1.crx" "Ankle_L.rx";
+connectAttr "Ankle_L_parentConstraint1.cry" "Ankle_L.ry";
+connectAttr "Ankle_L_parentConstraint1.crz" "Ankle_L.rz";
+connectAttr "Ankle_L.ro" "Ankle_L_parentConstraint1.cro";
+connectAttr "Ankle_L.pim" "Ankle_L_parentConstraint1.cpim";
+connectAttr "Ankle_L.rp" "Ankle_L_parentConstraint1.crp";
+connectAttr "Ankle_L.rpt" "Ankle_L_parentConstraint1.crt";
+connectAttr "Ankle_L.jo" "Ankle_L_parentConstraint1.cjo";
+connectAttr "|ControllerGroup12|Controller2.t" "Ankle_L_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup12|Controller2.rp" "Ankle_L_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup12|Controller2.rpt" "Ankle_L_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup12|Controller2.r" "Ankle_L_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup12|Controller2.ro" "Ankle_L_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup12|Controller2.s" "Ankle_L_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup12|Controller2.pm" "Ankle_L_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Ankle_L_parentConstraint1.w0" "Ankle_L_parentConstraint1.tg[0].tw";
+connectAttr "Knee_L.ro" "Knee_L_parentConstraint1.cro";
+connectAttr "Knee_L.pim" "Knee_L_parentConstraint1.cpim";
+connectAttr "Knee_L.rp" "Knee_L_parentConstraint1.crp";
+connectAttr "Knee_L.rpt" "Knee_L_parentConstraint1.crt";
+connectAttr "Knee_L.jo" "Knee_L_parentConstraint1.cjo";
+connectAttr "|ControllerGroup11|Controller2.t" "Knee_L_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup11|Controller2.rp" "Knee_L_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup11|Controller2.rpt" "Knee_L_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup11|Controller2.r" "Knee_L_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup11|Controller2.ro" "Knee_L_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup11|Controller2.s" "Knee_L_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup11|Controller2.pm" "Knee_L_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Knee_L_parentConstraint1.w0" "Knee_L_parentConstraint1.tg[0].tw";
+connectAttr "Hip_L.ro" "Hip_L_parentConstraint1.cro";
+connectAttr "Hip_L.pim" "Hip_L_parentConstraint1.cpim";
+connectAttr "Hip_L.rp" "Hip_L_parentConstraint1.crp";
+connectAttr "Hip_L.rpt" "Hip_L_parentConstraint1.crt";
+connectAttr "Hip_L.jo" "Hip_L_parentConstraint1.cjo";
+connectAttr "|ControllerGroup10|Controller2.t" "Hip_L_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup10|Controller2.rp" "Hip_L_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup10|Controller2.rpt" "Hip_L_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup10|Controller2.r" "Hip_L_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup10|Controller2.ro" "Hip_L_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup10|Controller2.s" "Hip_L_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup10|Controller2.pm" "Hip_L_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Hip_L_parentConstraint1.w0" "Hip_L_parentConstraint1.tg[0].tw";
 connectAttr "Pelvis.s" "Hip_R.is";
+connectAttr "Hip_R_parentConstraint1.ctx" "Hip_R.tx";
+connectAttr "Hip_R_parentConstraint1.cty" "Hip_R.ty";
+connectAttr "Hip_R_parentConstraint1.ctz" "Hip_R.tz";
+connectAttr "Hip_R_parentConstraint1.crx" "Hip_R.rx";
+connectAttr "Hip_R_parentConstraint1.cry" "Hip_R.ry";
+connectAttr "Hip_R_parentConstraint1.crz" "Hip_R.rz";
 connectAttr "Hip_R.s" "Knee_R.is";
+connectAttr "Knee_R_parentConstraint1.ctx" "Knee_R.tx";
+connectAttr "Knee_R_parentConstraint1.cty" "Knee_R.ty";
+connectAttr "Knee_R_parentConstraint1.ctz" "Knee_R.tz";
+connectAttr "Knee_R_parentConstraint1.crx" "Knee_R.rx";
+connectAttr "Knee_R_parentConstraint1.cry" "Knee_R.ry";
+connectAttr "Knee_R_parentConstraint1.crz" "Knee_R.rz";
 connectAttr "Knee_R.s" "Ankle_R.is";
+connectAttr "Ankle_R_parentConstraint1.ctx" "Ankle_R.tx";
+connectAttr "Ankle_R_parentConstraint1.cty" "Ankle_R.ty";
+connectAttr "Ankle_R_parentConstraint1.ctz" "Ankle_R.tz";
+connectAttr "Ankle_R_parentConstraint1.crx" "Ankle_R.rx";
+connectAttr "Ankle_R_parentConstraint1.cry" "Ankle_R.ry";
+connectAttr "Ankle_R_parentConstraint1.crz" "Ankle_R.rz";
+connectAttr "Ankle_R.ro" "Ankle_R_parentConstraint1.cro";
+connectAttr "Ankle_R.pim" "Ankle_R_parentConstraint1.cpim";
+connectAttr "Ankle_R.rp" "Ankle_R_parentConstraint1.crp";
+connectAttr "Ankle_R.rpt" "Ankle_R_parentConstraint1.crt";
+connectAttr "Ankle_R.jo" "Ankle_R_parentConstraint1.cjo";
+connectAttr "|ControllerGroup9|Controller2.t" "Ankle_R_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup9|Controller2.rp" "Ankle_R_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup9|Controller2.rpt" "Ankle_R_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup9|Controller2.r" "Ankle_R_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup9|Controller2.ro" "Ankle_R_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup9|Controller2.s" "Ankle_R_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup9|Controller2.pm" "Ankle_R_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Ankle_R_parentConstraint1.w0" "Ankle_R_parentConstraint1.tg[0].tw";
+connectAttr "Knee_R.ro" "Knee_R_parentConstraint1.cro";
+connectAttr "Knee_R.pim" "Knee_R_parentConstraint1.cpim";
+connectAttr "Knee_R.rp" "Knee_R_parentConstraint1.crp";
+connectAttr "Knee_R.rpt" "Knee_R_parentConstraint1.crt";
+connectAttr "Knee_R.jo" "Knee_R_parentConstraint1.cjo";
+connectAttr "|ControllerGroup8|Controller2.t" "Knee_R_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup8|Controller2.rp" "Knee_R_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup8|Controller2.rpt" "Knee_R_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup8|Controller2.r" "Knee_R_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup8|Controller2.ro" "Knee_R_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup8|Controller2.s" "Knee_R_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup8|Controller2.pm" "Knee_R_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Knee_R_parentConstraint1.w0" "Knee_R_parentConstraint1.tg[0].tw";
+connectAttr "Hip_R.ro" "Hip_R_parentConstraint1.cro";
+connectAttr "Hip_R.pim" "Hip_R_parentConstraint1.cpim";
+connectAttr "Hip_R.rp" "Hip_R_parentConstraint1.crp";
+connectAttr "Hip_R.rpt" "Hip_R_parentConstraint1.crt";
+connectAttr "Hip_R.jo" "Hip_R_parentConstraint1.cjo";
+connectAttr "|ControllerGroup7|Controller2.t" "Hip_R_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup7|Controller2.rp" "Hip_R_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup7|Controller2.rpt" "Hip_R_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup7|Controller2.r" "Hip_R_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup7|Controller2.ro" "Hip_R_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup7|Controller2.s" "Hip_R_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup7|Controller2.pm" "Hip_R_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Hip_R_parentConstraint1.w0" "Hip_R_parentConstraint1.tg[0].tw";
 connectAttr "Root.s" "LowerBack.is";
+connectAttr "LowerBack_parentConstraint1.ctx" "LowerBack.tx";
+connectAttr "LowerBack_parentConstraint1.cty" "LowerBack.ty";
+connectAttr "LowerBack_parentConstraint1.ctz" "LowerBack.tz";
+connectAttr "LowerBack_parentConstraint1.crx" "LowerBack.rx";
+connectAttr "LowerBack_parentConstraint1.cry" "LowerBack.ry";
+connectAttr "LowerBack_parentConstraint1.crz" "LowerBack.rz";
 connectAttr "LowerBack.s" "MiddleBack.is";
 connectAttr "MiddleBack.s" "UpperBack.is";
 connectAttr "UpperBack.s" "Clav_R.is";
+connectAttr "Clav_R_parentConstraint1.ctx" "Clav_R.tx";
+connectAttr "Clav_R_parentConstraint1.cty" "Clav_R.ty";
+connectAttr "Clav_R_parentConstraint1.ctz" "Clav_R.tz";
+connectAttr "Clav_R_parentConstraint1.crx" "Clav_R.rx";
+connectAttr "Clav_R_parentConstraint1.cry" "Clav_R.ry";
+connectAttr "Clav_R_parentConstraint1.crz" "Clav_R.rz";
 connectAttr "Clav_R.s" "Shoulder_R.is";
 connectAttr "Shoulder_R.s" "Elbow_R.is";
+connectAttr "Elbow_R_parentConstraint1.ctx" "Elbow_R.tx";
+connectAttr "Elbow_R_parentConstraint1.cty" "Elbow_R.ty";
+connectAttr "Elbow_R_parentConstraint1.ctz" "Elbow_R.tz";
+connectAttr "Elbow_R_parentConstraint1.crx" "Elbow_R.rx";
+connectAttr "Elbow_R_parentConstraint1.cry" "Elbow_R.ry";
+connectAttr "Elbow_R_parentConstraint1.crz" "Elbow_R.rz";
 connectAttr "Elbow_R.s" "Wrist_R.is";
+connectAttr "Wrist_R_parentConstraint1.ctx" "Wrist_R.tx";
+connectAttr "Wrist_R_parentConstraint1.cty" "Wrist_R.ty";
+connectAttr "Wrist_R_parentConstraint1.ctz" "Wrist_R.tz";
+connectAttr "Wrist_R_parentConstraint1.crx" "Wrist_R.rx";
+connectAttr "Wrist_R_parentConstraint1.cry" "Wrist_R.ry";
+connectAttr "Wrist_R_parentConstraint1.crz" "Wrist_R.rz";
+connectAttr "Wrist_R.ro" "Wrist_R_parentConstraint1.cro";
+connectAttr "Wrist_R.pim" "Wrist_R_parentConstraint1.cpim";
+connectAttr "Wrist_R.rp" "Wrist_R_parentConstraint1.crp";
+connectAttr "Wrist_R.rpt" "Wrist_R_parentConstraint1.crt";
+connectAttr "Wrist_R.jo" "Wrist_R_parentConstraint1.cjo";
+connectAttr "Controller4.t" "Wrist_R_parentConstraint1.tg[0].tt";
+connectAttr "Controller4.rp" "Wrist_R_parentConstraint1.tg[0].trp";
+connectAttr "Controller4.rpt" "Wrist_R_parentConstraint1.tg[0].trt";
+connectAttr "Controller4.r" "Wrist_R_parentConstraint1.tg[0].tr";
+connectAttr "Controller4.ro" "Wrist_R_parentConstraint1.tg[0].tro";
+connectAttr "Controller4.s" "Wrist_R_parentConstraint1.tg[0].ts";
+connectAttr "Controller4.pm" "Wrist_R_parentConstraint1.tg[0].tpm";
+connectAttr "Wrist_R_parentConstraint1.w0" "Wrist_R_parentConstraint1.tg[0].tw";
+connectAttr "Elbow_R.ro" "Elbow_R_parentConstraint1.cro";
+connectAttr "Elbow_R.pim" "Elbow_R_parentConstraint1.cpim";
+connectAttr "Elbow_R.rp" "Elbow_R_parentConstraint1.crp";
+connectAttr "Elbow_R.rpt" "Elbow_R_parentConstraint1.crt";
+connectAttr "Elbow_R.jo" "Elbow_R_parentConstraint1.cjo";
+connectAttr "Controller3.t" "Elbow_R_parentConstraint1.tg[0].tt";
+connectAttr "Controller3.rp" "Elbow_R_parentConstraint1.tg[0].trp";
+connectAttr "Controller3.rpt" "Elbow_R_parentConstraint1.tg[0].trt";
+connectAttr "Controller3.r" "Elbow_R_parentConstraint1.tg[0].tr";
+connectAttr "Controller3.ro" "Elbow_R_parentConstraint1.tg[0].tro";
+connectAttr "Controller3.s" "Elbow_R_parentConstraint1.tg[0].ts";
+connectAttr "Controller3.pm" "Elbow_R_parentConstraint1.tg[0].tpm";
+connectAttr "Elbow_R_parentConstraint1.w0" "Elbow_R_parentConstraint1.tg[0].tw";
+connectAttr "Clav_R.ro" "Clav_R_parentConstraint1.cro";
+connectAttr "Clav_R.pim" "Clav_R_parentConstraint1.cpim";
+connectAttr "Clav_R.rp" "Clav_R_parentConstraint1.crp";
+connectAttr "Clav_R.rpt" "Clav_R_parentConstraint1.crt";
+connectAttr "Clav_R.jo" "Clav_R_parentConstraint1.cjo";
+connectAttr "|ControllerGroup13|Controller2.t" "Clav_R_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup13|Controller2.rp" "Clav_R_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup13|Controller2.rpt" "Clav_R_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup13|Controller2.r" "Clav_R_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup13|Controller2.ro" "Clav_R_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup13|Controller2.s" "Clav_R_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup13|Controller2.pm" "Clav_R_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Clav_R_parentConstraint1.w0" "Clav_R_parentConstraint1.tg[0].tw";
 connectAttr "UpperBack.s" "Clav_L.is";
+connectAttr "Clav_L_parentConstraint1.ctx" "Clav_L.tx";
+connectAttr "Clav_L_parentConstraint1.cty" "Clav_L.ty";
+connectAttr "Clav_L_parentConstraint1.ctz" "Clav_L.tz";
+connectAttr "Clav_L_parentConstraint1.crx" "Clav_L.rx";
+connectAttr "Clav_L_parentConstraint1.cry" "Clav_L.ry";
+connectAttr "Clav_L_parentConstraint1.crz" "Clav_L.rz";
 connectAttr "Clav_L.s" "Shoulder_L.is";
 connectAttr "Shoulder_L.s" "Elbow_L.is";
+connectAttr "Elbow_L_parentConstraint1.ctx" "Elbow_L.tx";
+connectAttr "Elbow_L_parentConstraint1.cty" "Elbow_L.ty";
+connectAttr "Elbow_L_parentConstraint1.ctz" "Elbow_L.tz";
+connectAttr "Elbow_L_parentConstraint1.crx" "Elbow_L.rx";
+connectAttr "Elbow_L_parentConstraint1.cry" "Elbow_L.ry";
+connectAttr "Elbow_L_parentConstraint1.crz" "Elbow_L.rz";
 connectAttr "Elbow_L.s" "Wrist_L.is";
+connectAttr "Wrist_L_parentConstraint1.ctx" "Wrist_L.tx";
+connectAttr "Wrist_L_parentConstraint1.cty" "Wrist_L.ty";
+connectAttr "Wrist_L_parentConstraint1.ctz" "Wrist_L.tz";
+connectAttr "Wrist_L_parentConstraint1.crx" "Wrist_L.rx";
+connectAttr "Wrist_L_parentConstraint1.cry" "Wrist_L.ry";
+connectAttr "Wrist_L_parentConstraint1.crz" "Wrist_L.rz";
+connectAttr "Wrist_L.ro" "Wrist_L_parentConstraint1.cro";
+connectAttr "Wrist_L.pim" "Wrist_L_parentConstraint1.cpim";
+connectAttr "Wrist_L.rp" "Wrist_L_parentConstraint1.crp";
+connectAttr "Wrist_L.rpt" "Wrist_L_parentConstraint1.crt";
+connectAttr "Wrist_L.jo" "Wrist_L_parentConstraint1.cjo";
+connectAttr "|ControllerGroup1|Controller1.t" "Wrist_L_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup1|Controller1.rp" "Wrist_L_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup1|Controller1.rpt" "Wrist_L_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup1|Controller1.r" "Wrist_L_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup1|Controller1.ro" "Wrist_L_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup1|Controller1.s" "Wrist_L_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup1|Controller1.pm" "Wrist_L_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Wrist_L_parentConstraint1.w0" "Wrist_L_parentConstraint1.tg[0].tw";
+connectAttr "Elbow_L.ro" "Elbow_L_parentConstraint1.cro";
+connectAttr "Elbow_L.pim" "Elbow_L_parentConstraint1.cpim";
+connectAttr "Elbow_L.rp" "Elbow_L_parentConstraint1.crp";
+connectAttr "Elbow_L.rpt" "Elbow_L_parentConstraint1.crt";
+connectAttr "Elbow_L.jo" "Elbow_L_parentConstraint1.cjo";
+connectAttr "|ControllerGroup2|Controller1.t" "Elbow_L_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup2|Controller1.rp" "Elbow_L_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup2|Controller1.rpt" "Elbow_L_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup2|Controller1.r" "Elbow_L_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup2|Controller1.ro" "Elbow_L_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup2|Controller1.s" "Elbow_L_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup2|Controller1.pm" "Elbow_L_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Elbow_L_parentConstraint1.w0" "Elbow_L_parentConstraint1.tg[0].tw";
+connectAttr "Clav_L.ro" "Clav_L_parentConstraint1.cro";
+connectAttr "Clav_L.pim" "Clav_L_parentConstraint1.cpim";
+connectAttr "Clav_L.rp" "Clav_L_parentConstraint1.crp";
+connectAttr "Clav_L.rpt" "Clav_L_parentConstraint1.crt";
+connectAttr "Clav_L.jo" "Clav_L_parentConstraint1.cjo";
+connectAttr "|ControllerGroup14|Controller2.t" "Clav_L_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup14|Controller2.rp" "Clav_L_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup14|Controller2.rpt" "Clav_L_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup14|Controller2.r" "Clav_L_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup14|Controller2.ro" "Clav_L_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup14|Controller2.s" "Clav_L_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup14|Controller2.pm" "Clav_L_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Clav_L_parentConstraint1.w0" "Clav_L_parentConstraint1.tg[0].tw";
 connectAttr "UpperBack.s" "Neck1.is";
 connectAttr "Neck1.s" "Neck2.is";
 connectAttr "Neck2.s" "Head.is";
+connectAttr "Head_parentConstraint1.ctx" "Head.tx";
+connectAttr "Head_parentConstraint1.cty" "Head.ty";
+connectAttr "Head_parentConstraint1.ctz" "Head.tz";
+connectAttr "Head_parentConstraint1.crx" "Head.rx";
+connectAttr "Head_parentConstraint1.cry" "Head.ry";
+connectAttr "Head_parentConstraint1.crz" "Head.rz";
+connectAttr "Head.ro" "Head_parentConstraint1.cro";
+connectAttr "Head.pim" "Head_parentConstraint1.cpim";
+connectAttr "Head.rp" "Head_parentConstraint1.crp";
+connectAttr "Head.rpt" "Head_parentConstraint1.crt";
+connectAttr "Head.jo" "Head_parentConstraint1.cjo";
+connectAttr "|ControllerGroup19|Controller2.t" "Head_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup19|Controller2.rp" "Head_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup19|Controller2.rpt" "Head_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup19|Controller2.r" "Head_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup19|Controller2.ro" "Head_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup19|Controller2.s" "Head_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup19|Controller2.pm" "Head_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Head_parentConstraint1.w0" "Head_parentConstraint1.tg[0].tw";
+connectAttr "LowerBack.ro" "LowerBack_parentConstraint1.cro";
+connectAttr "LowerBack.pim" "LowerBack_parentConstraint1.cpim";
+connectAttr "LowerBack.rp" "LowerBack_parentConstraint1.crp";
+connectAttr "LowerBack.rpt" "LowerBack_parentConstraint1.crt";
+connectAttr "LowerBack.jo" "LowerBack_parentConstraint1.cjo";
+connectAttr "|ControllerGroup17|Controller2.t" "LowerBack_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup17|Controller2.rp" "LowerBack_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup17|Controller2.rpt" "LowerBack_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup17|Controller2.r" "LowerBack_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup17|Controller2.ro" "LowerBack_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup17|Controller2.s" "LowerBack_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup17|Controller2.pm" "LowerBack_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "LowerBack_parentConstraint1.w0" "LowerBack_parentConstraint1.tg[0].tw"
+		;
+connectAttr "Root.ro" "Root_parentConstraint1.cro";
+connectAttr "Root.pim" "Root_parentConstraint1.cpim";
+connectAttr "Root.rp" "Root_parentConstraint1.crp";
+connectAttr "Root.rpt" "Root_parentConstraint1.crt";
+connectAttr "Root.jo" "Root_parentConstraint1.cjo";
+connectAttr "|ControllerGroup18|Controller2.t" "Root_parentConstraint1.tg[0].tt"
+		;
+connectAttr "|ControllerGroup18|Controller2.rp" "Root_parentConstraint1.tg[0].trp"
+		;
+connectAttr "|ControllerGroup18|Controller2.rpt" "Root_parentConstraint1.tg[0].trt"
+		;
+connectAttr "|ControllerGroup18|Controller2.r" "Root_parentConstraint1.tg[0].tr"
+		;
+connectAttr "|ControllerGroup18|Controller2.ro" "Root_parentConstraint1.tg[0].tro"
+		;
+connectAttr "|ControllerGroup18|Controller2.s" "Root_parentConstraint1.tg[0].ts"
+		;
+connectAttr "|ControllerGroup18|Controller2.pm" "Root_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Root_parentConstraint1.w0" "Root_parentConstraint1.tg[0].tw";
 connectAttr "makeNurbCircle1.oc" "|ControllerGroup1|Controller1|ControllerShape1.cr"
 		;
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
